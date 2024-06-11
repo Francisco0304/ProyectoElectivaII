@@ -1,7 +1,7 @@
 async function loadData() {
     console.log("aqui estoy 1")
     try {
-        const result = await fetch("http://localhost:3000/books");
+        const result = await fetch("https://luisgbackend-ojduqa3qm-luis-projects-3e6f88b0.vercel.app/books");
         if (!result.ok) {
             throw new Error(`HTTP error! Status: ${result.status}`);
         }
