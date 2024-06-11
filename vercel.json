@@ -1,9 +1,9 @@
 {
-    "builds": [
-      {
-        "src": "./index.js",
-        "use": "@vercel/node"
-      }
+    "buils":[
+        {
+            "src": "./index.js",
+            "user": "@vercel/node"
+        }
     ],
     "routes": [
       {
@@ -12,4 +12,3 @@
       }
     ]
 }
-  
