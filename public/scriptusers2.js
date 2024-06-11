@@ -10,7 +10,7 @@ async function registrar() {
 
         console.log(bookName);
         // Realizar la solicitud GET para obtener el ID del libro
-        const bookResponse = await fetch(`http://localhost:3000/books/search?name=${bookName}`);
+        const bookResponse = await fetch(`https://proyectobackendelectiva2.vercel.app/books/search?name=${bookName}`);
         
         if (!bookResponse.ok) {
             throw new Error(`HTTP error! Status: ${bookResponse.status}`);
@@ -40,7 +40,7 @@ async function registrar() {
         }
 
         // Realizar la solicitud POST para agregar al usuario al libro correspondiente
-        const response = await fetch(`http://localhost:3000/user/${bookId}`, {
+        const response = await fetch(`https://proyectobackendelectiva2.vercel.app/${bookId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -64,7 +64,7 @@ async function registrar() {
                 // Si la actualización es exitosa, mostrar mensaje de éxito
                 console.log('Préstamo realizado exitosamente y estado del libro actualizado');
                 alert('¡Préstamo realizado exitosamente y estado del libro actualizado!');
-                window.location.href = "http://localhost:3200/";
+                window.location.href = "https://proyectobackendelectiva2.vercel.app/";
             } else {
                 // Si la actualización no es exitosa, mostrar mensaje de error
                 console.error('Hubo un error al actualizar el estado del libro:', updateResponse.status);
