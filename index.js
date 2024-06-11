@@ -7,7 +7,12 @@ const app = express()
 app.set('PORT',process.env.PORT || 3200)
 
 // Habilitar el middleware CORS
-app.use(cors());
+const corsOptions = {
+  origin: 'https://backluis.vercel.app/',
+  optionsSuccessStatus: 200 // Para algunos navegadores antiguos
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.static(__dirname + "/public/"));
 
