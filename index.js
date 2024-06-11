@@ -3,6 +3,14 @@ const path = require('path');
 const cors = require('cors'); // Importar el middleware cors
 
 const app = express();
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+const apiUrl = 'https://luisgbackend.vercel.app/books';
+
+fetch(proxyUrl + apiUrl)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error al obtener los datos:', error));
+
 
 app.set('PORT', process.env.PORT || 3200);
 
