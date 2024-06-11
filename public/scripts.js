@@ -1,5 +1,5 @@
 async function loadData() {
-    console.log("Aquí estoy 1");
+    console.log("Cargando datos...");
     try {
         const result = await fetch("https://backluis.vercel.app/books");
         if (!result.ok) {
@@ -12,39 +12,40 @@ async function loadData() {
     }
 }
 
+function renderTableData(data) {
+    const tBody = document.querySelector("#tBody");
+    tBody.innerHTML = ""; // Limpiar la tabla antes de agregar nuevos datos
+
+    if (!data || !data.data || data.data.length === 0) {
+        tBody.innerHTML = "<tr><td colspan='4'>No hay datos disponibles</td></tr>";
+        return;
+    }
+
+    data.data.forEach(book => {
+        const row = document.createElement('tr');
+
+        const colYear = document.createElement('td');
+        colYear.textContent = book.year;
+        row.appendChild(colYear);
+
+        const colName = document.createElement('td');
+        colName.textContent = book.name;
+        row.appendChild(colName);
+
+        const colPages = document.createElement('td');
+        colPages.textContent = book.pages;
+        row.appendChild(colPages);
+
+        const colAuthor = document.createElement('td');
+        colAuthor.textContent = book.author;
+        row.appendChild(colAuthor);
+
+        tBody.appendChild(row);
+    });
+}
+
 loadData()
     .then(data => {
-        if (!data || !data.data) return; // Salir si no hay datos o no hay un array en data.data
-        console.log(data);  // Verifica la estructura de los datos
-        const bookCount = document.querySelector("#tbody");
-        if (bookCount) {
-            bookCount.textContent = data.data.length;  // Actualiza el número de libros
-            console.log(bookCount.textContent);
-        } else {
-            console.error('Elemento #book-count no encontrado');
-        }
-
-        const tBody = document.querySelector("#tBody");  // Si tienes una tabla para mostrar los libros
-        data.data.forEach(book => {
-            const row = document.createElement('tr');
-
-            const colYear = document.createElement('td');
-            colYear.appendChild(document.createTextNode(book.year));
-            row.append(colYear);
-
-            const colName = document.createElement('td');
-            colName.appendChild(document.createTextNode(book.name));
-            row.append(colName);
-
-            const colPages = document.createElement('td');
-            colPages.appendChild(document.createTextNode(book.pages));
-            row.append(colPages);
-
-            const colAuthor = document.createElement('td');
-            colAuthor.appendChild(document.createTextNode(book.author));
-            row.append(colAuthor);
-
-            tBody.appendChild(row);
-        });
+        renderTableData(data);
     })
     .catch(err => console.error('Error al procesar datos:', err));
