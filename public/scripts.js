@@ -1,13 +1,13 @@
 async function loadData() {
-    console.log("aqui estoy 1")
+    console.log("Aquí estoy 1");
     try {
         const result = await fetch("https://luisgbackend-ojduqa3qm-luis-projects-3e6f88b0.vercel.app/books");
         if (!result.ok) {
-            throw new Error(`HTTP error! Status: ${result.status}`);
+            throw new Error(`¡Error HTTP! Estado: ${result.status}`);
         }
         return result.json(); // Devolver los datos como JSON
     } catch (err) {
-        console.error('Error fetching data:', err);
+        console.error('Error al obtener datos:', err);
         return null;
     }
 }
@@ -21,9 +21,8 @@ loadData()
             bookCount.textContent = data.data.length;  // Actualiza el número de libros
             console.log(bookCount.textContent);
         } else {
-        console.error('Element #book-count not found');
-    }
-
+            console.error('Elemento #book-count no encontrado');
+        }
 
         const tBody = document.querySelector("#tBody");  // Si tienes una tabla para mostrar los libros
         data.data.forEach(book => {
@@ -48,4 +47,4 @@ loadData()
             tBody.appendChild(row);
         });
     })
-    .catch(err => console.error('Error processing data:', err));
+    .catch(err => console.error('Error al procesar datos:', err));
