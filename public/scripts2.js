@@ -20,7 +20,7 @@ async function registrar() {
         };
 
         // Realizar la solicitud POST
-        const response = await fetch("https://proyectobackendelectiva2.vercel.app/books", {
+        const response = await fetch("https://localhost:3000/books", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
