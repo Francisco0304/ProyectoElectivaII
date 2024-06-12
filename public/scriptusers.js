@@ -5,8 +5,7 @@ async function loadData() {
         if (!result.ok) {
             throw new Error(`HTTP error! Status: ${result.status}`);
         }
-        return result.json(); // Devolver los datos como JSON
-        
+        return result.json(); // Devolver los datos como JSON 
     } catch (err) {
         console.error('Error fetching data:', err);
         return null;

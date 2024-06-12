@@ -1,7 +1,7 @@
 async function loadData() {
     console.log("Aquí estoy 1");
     try {
-        const result = await fetch("https://localhost:3000/books");
+        const result = await fetch("http://localhost:3000/books");
         if (!result.ok) {
             throw new Error(`¡Error HTTP! Estado: ${result.status}`);
         }

@@ -33,7 +33,7 @@ async function registrar() {
             // Si la respuesta es exitosa, mostrar mensaje de éxito
             console.log('Libro guardado exitosamente');
             alert('¡Libro guardado exitosamente!');
-            window.location.href = "http://localhost:3200/"
+            window.location.href = "https://frontluis.vercel.app/"
         } else {
             // Si la respuesta no es exitosa, mostrar mensaje de error
             console.error('Hubo un error al guardar el libro:', response.status);
